@@ -16,8 +16,8 @@ jobs:
             pip install -r requirements.txt
       - save_chche:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-          path: 
-            - "venv"
+          paths: 
+            - venv
       - run:
           name: Run tests
           command: |
