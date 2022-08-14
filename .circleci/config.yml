@@ -12,7 +12,7 @@ jobs:
           name: Pip install
           command: |
             python3 -m venv cicd-demo
-            . cicd-demo/bin/activate
+            source cicd-demo/bin/activate
             pip install -r requirements.txt
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
