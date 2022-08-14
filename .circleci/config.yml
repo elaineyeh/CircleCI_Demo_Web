@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Pip install
           command: |
-            python3 -m venv cicd-demo/
+            python3 -m venv cicd-demo
             source cicd-demo/bin/activate
             pip install -r requirements.txt
       - save_cache:
