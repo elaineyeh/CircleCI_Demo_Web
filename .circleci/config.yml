@@ -23,7 +23,7 @@ jobs:
           command: |
             source cicd-demo/bin/activate
             cd CircleCI_Demo_Ｗeb
-            python3 manage.py runserver
+            python3 manage.py test
 
 workflows:
   sample: 
