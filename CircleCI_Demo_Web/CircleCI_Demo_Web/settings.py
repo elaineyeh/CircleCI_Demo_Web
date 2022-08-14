@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'CircleCI_Demo_Ｗeb.urls'
+ROOT_URLCONF = 'CircleCI_Demo_Web.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CircleCI_Demo_Ｗeb.wsgi.application'
+WSGI_APPLICATION = 'CircleCI_Demo_Web.wsgi.application'
 
 
 # Database
