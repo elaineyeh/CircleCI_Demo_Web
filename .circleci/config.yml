@@ -1,0 +1,31 @@
+version: 2.1
+
+jobs:
+  build-and-test: 
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Pip install
+          command: |
+            python3 -m venv cicd-demo/
+            source cicd-demo/bin/activate
+            pip install -r requirements.txt
+      - save_chche:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          path: 
+            - "venv"
+      - run:
+          name: Run tests
+          command: |
+            source cicd-demo/bin/activate
+            cd CircleCI_Demo_Web/
+            python3 manage.py runserver
+
+workflows:
+  sample: 
+    jobs:
+      - build-and-test
