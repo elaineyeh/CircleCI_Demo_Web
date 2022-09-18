@@ -16,9 +16,31 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from quickstart.views import home_view
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+from quickstart.views import home_view, RegisterAPIView, RegisterMixin, RegisterViewSet
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="CircleCI_Demo_Web API",
+        default_version='v1',
+        description="Test description",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="abc@xyz.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home_view),
+    path('register/', RegisterAPIView.as_view()),
+    path('register1/', RegisterMixin.as_view()),
+    path('register2/', RegisterViewSet.as_view({'post': 'create'})),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
